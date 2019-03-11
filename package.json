@@ -1,0 +1,32 @@
+{
+  "name": "RNHooksTodo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "16.8.4",
+    "react-native": "0.59.0-rc.3",
+    "react-native-easy-toast": "^1.2.0",
+    "react-native-simple-toast": "^0.0.8",
+    "react-native-vector-icons": "^6.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@types/react": "^16.8.7",
+    "@types/react-native": "^0.57.38",
+    "babel-jest": "24.3.1",
+    "jest": "24.3.1",
+    "metro-react-native-babel-preset": "0.53.0",
+    "react-test-renderer": "16.8.4"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "resolutions": {
+    "scheduler": "0.13.4",
+    "react-devtools-core": "3.6.1"
+  }
+}
