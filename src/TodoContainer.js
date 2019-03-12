@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import TodoContent from "./TodoContent";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -6,6 +6,14 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 const TodoContainer = () => {
   const [currentTodo, setCurrentTodo] = useState("");
   const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    console.log("run useEffect [currentTodo]", currentTodo);
+  });
+
+  useEffect(() => {
+    console.log("run useEffect [todos]", todos);
+  }, [todos]);
 
   return (
     <View style={styles.container}>
