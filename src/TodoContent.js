@@ -1,14 +1,15 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import TodoItem from "./TodoItem";
+import { TodoContext } from "./TodoContainer";
 
-const TodoContent = ({ todos }) => {
+const TodoContent = () => {
   return (
-    <>
-      {todos.map(todo => (
-        <TodoItem key={todo.id} todo={todo} />
-      ))}
-    </>
+    <TodoContext.Consumer>
+      {({ todos }) => {
+        return todos.map(todo => <TodoItem key={todo.id} todo={todo} />);
+      }}
+    </TodoContext.Consumer>
   );
 };
 

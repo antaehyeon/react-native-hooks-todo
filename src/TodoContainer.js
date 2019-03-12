@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import TodoContent from "./TodoContent";
-import Icon from "react-native-vector-icons/MaterialIcons";
 import useFetch from "../customHooks/useFetch";
 import TodoInput from "./TodoInput";
+
+export const TodoContext = React.createContext();
 
 const TodoContainer = () => {
   const [todos, setTodos] = useState([]);
@@ -11,10 +12,12 @@ const TodoContainer = () => {
   useFetch(setTodos, "http://192.168.1.219:8080/todo");
 
   return (
-    <View style={styles.container}>
-      <TodoInput todos={todos} setTodos={setTodos} />
-      <TodoContent todos={todos} />
-    </View>
+    <TodoContext.Provider value={{ todos, setTodos }}>
+      <View style={styles.container}>
+        <TodoInput />
+        <TodoContent />
+      </View>
+    </TodoContext.Provider>
   );
 };
 
