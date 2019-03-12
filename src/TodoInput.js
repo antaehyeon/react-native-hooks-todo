@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { TodoContext } from "./TodoContainer";
+import { TodoContext } from "../store/TodoStore";
 
 const TodoInput = () => {
   const todoInputRef = useRef();
@@ -23,9 +23,10 @@ const TodoInput = () => {
       />
       <Icon.Button
         name="add-box"
-        size={30}
+        size={20}
         color="black"
         backgroundColor="transparent"
+        style={{ margin: 0, padding: 0 }}
         onPress={() =>
           dispatch({
             type: "ADD_TODO",

@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
-import TodoHeader from "./src/TodoHeader";
-import TodoContainer from "./src/TodoContainer";
+import TodoStore from "./store/TodoStore";
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TodoHeader />
-        <TodoContainer />
+        <TodoStore />
       </View>
     );
   }

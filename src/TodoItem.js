@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import Toast from "react-native-simple-toast";
-import { TodoContext } from "./TodoContainer";
+import { TodoContext } from "../store/TodoStore";
 
 const TodoItem = ({ todo }) => {
   const { dispatch } = useContext(TodoContext);
