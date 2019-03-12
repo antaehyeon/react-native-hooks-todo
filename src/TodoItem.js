@@ -1,21 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import Toast from "react-native-simple-toast";
+import { TodoContext } from "./TodoContainer";
 
 const TodoItem = ({ todo }) => {
+  const { dispatch } = useContext(TodoContext);
+
   return (
     <View style={styles.todoContentContainer}>
       <View style={styles.horizontalCenter}>
         <Icon.Button
-          name="circle"
+          name={todo.status === "todo" ? "circle" : "check-circle"}
           backgroundColor="transparent"
           size={20}
           color="black"
           style={styles.iconMargin}
-          onPress={() => Toast.show("Change Status")}
+          onPress={() => {
+            dispatch({ type: "CHANGE_TODO_STATUS", payload: todo.id - 1 });
+          }}
         />
-        <Text style={styles.todoContentText}>{todo.title}</Text>
+        <Text
+          style={[
+            styles.todoContentText,
+            todo.status === "done" ? styles.textLineThrough : null
+          ]}
+        >
+          {todo.title}
+        </Text>
       </View>
       <View style={styles.horizontalCenter}>
         <Icon.Button

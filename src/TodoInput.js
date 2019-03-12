@@ -4,18 +4,8 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { TodoContext } from "./TodoContainer";
 
 const TodoInput = () => {
-  const { todos, setTodos } = useContext(TodoContext);
   const todoInputRef = useRef();
-
-  const addTodoData = () => {
-    const currentTodoText = todoInputRef.current._lastNativeText;
-    const newTodo = {
-      id: todos.length + 1,
-      title: currentTodoText,
-      status: "todo"
-    };
-    setTodos([...todos, newTodo]);
-  };
+  const { dispatch } = useContext(TodoContext);
 
   return (
     <View style={styles.todoInputText}>
@@ -36,7 +26,12 @@ const TodoInput = () => {
         size={30}
         color="black"
         backgroundColor="transparent"
-        onPress={() => addTodoData()}
+        onPress={() =>
+          dispatch({
+            type: "ADD_TODO",
+            payload: todoInputRef.current._lastNativeText
+          })
+        }
       />
     </View>
   );

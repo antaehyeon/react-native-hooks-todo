@@ -5,6 +5,7 @@ import { TodoContext } from "./TodoContainer";
 
 const TodoContent = () => {
   const { todos } = useContext(TodoContext);
+  console.log("check data", todos);
 
   return (
     <>
