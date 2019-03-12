@@ -14,6 +14,7 @@ const TodoContent = () => {
             size={20}
             color="black"
             style={styles.iconMargin}
+            onPress={() => Toast.show("Change Status")}
           />
           <Text style={styles.todoContentText}>
             Learning React Native Hooks

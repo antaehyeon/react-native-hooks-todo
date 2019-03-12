@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View } from "react-native";
 const Header = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.headerText}>To-Do Application</Text>
+      <Text style={styles.headerText}>할 일</Text>
     </View>
   );
 };
