@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet } from "react-native";
 import TodoItem from "./TodoItem";
 import { TodoContext } from "./TodoContainer";
 
 const TodoContent = () => {
+  const { todos } = useContext(TodoContext);
+
   return (
-    <TodoContext.Consumer>
-      {({ todos }) => {
-        return todos.map(todo => <TodoItem key={todo.id} todo={todo} />);
-      }}
-    </TodoContext.Consumer>
+    <>
+      {todos.map(todo => (
+        <TodoItem key={todo.id} todo={todo} />
+      ))}
+    </>
   );
 };
 

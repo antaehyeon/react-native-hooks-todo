@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, TextInput } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
 import TodoContent from "./TodoContent";
 import useFetch from "../customHooks/useFetch";
 import TodoInput from "./TodoInput";
