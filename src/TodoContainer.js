@@ -2,61 +2,17 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import TodoContent from "./TodoContent";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import axios from "axios";
+import useFetch from "../customHooks/useFetch";
+import TodoInput from "./TodoInput";
 
 const TodoContainer = () => {
-  const [currentTodo, setCurrentTodo] = useState("");
   const [todos, setTodos] = useState([]);
 
-  const fetchInitialData = async () => {
-    try {
-      // 안드로이드 에뮬레이터는 localhost 를 10.0.2.2 로 인식함
-      const response = await fetch("http://192.168.43.163:8080/todo");
-      const responseJson = await response.json();
-      setTodos(responseJson);
-    } catch (e) {
-      console.log("err", e);
-    }
-  };
-
-  useEffect(() => {
-    console.log("run useEffect [currentTodo]", currentTodo);
-  });
-
-  useEffect(() => {
-    console.log("run useEffect [todos]", todos);
-  }, [todos]);
-
-  useEffect(() => {
-    fetchInitialData();
-  }, []);
+  useFetch(setTodos, "http://192.168.1.219:8080/todo");
 
   return (
     <View style={styles.container}>
-      <View style={styles.todoInputText}>
-        <TextInput
-          style={{ padding: 0, margin: 0, paddingLeft: 8 }}
-          placeholder="할일을 입력해주세요"
-          placeholderTextColor="grey"
-          onChangeText={text => {
-            setCurrentTodo(text);
-          }}
-        />
-        <Icon.Button
-          name="add-box"
-          size={30}
-          color="black"
-          backgroundColor="transparent"
-          onPress={() => {
-            const newTodo = {
-              id: todos.length + 1,
-              title: currentTodo,
-              status: "todo"
-            };
-            setTodos([...todos, newTodo]);
-          }}
-        />
-      </View>
+      <TodoInput todos={todos} setTodos={setTodos} />
       <TodoContent todos={todos} />
     </View>
   );
@@ -70,14 +26,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10
-  },
-  todoInputText: {
-    height: 30,
-    borderWidth: 1,
-    margin: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
   }
 });
 
