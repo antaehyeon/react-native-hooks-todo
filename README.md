@@ -10,8 +10,10 @@
 
 ------
 
-1. useState, useFetch 동작 테스트
+1. useState, useFetch 구현
 
-2. 추가 예정
+2. useEffect 구현 및 테스트
 
-   
+   1. useEffect 를 이용한 서버 데이터 받기
+
+    

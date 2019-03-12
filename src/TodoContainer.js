@@ -2,10 +2,22 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import TodoContent from "./TodoContent";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import axios from "axios";
 
 const TodoContainer = () => {
   const [currentTodo, setCurrentTodo] = useState("");
   const [todos, setTodos] = useState([]);
+
+  const fetchInitialData = async () => {
+    try {
+      // 안드로이드 에뮬레이터는 localhost 를 10.0.2.2 로 인식함
+      const response = await fetch("http://192.168.43.163:8080/todo");
+      const responseJson = await response.json();
+      setTodos(responseJson);
+    } catch (e) {
+      console.log("err", e);
+    }
+  };
 
   useEffect(() => {
     console.log("run useEffect [currentTodo]", currentTodo);
@@ -14,6 +26,10 @@ const TodoContainer = () => {
   useEffect(() => {
     console.log("run useEffect [todos]", todos);
   }, [todos]);
+
+  useEffect(() => {
+    fetchInitialData();
+  }, []);
 
   return (
     <View style={styles.container}>

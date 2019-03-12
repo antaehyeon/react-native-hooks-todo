@@ -8,6 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "16.8.4",
     "react-native": "0.59.0-rc.3",
     "react-native-easy-toast": "^1.2.0",
