@@ -17,7 +17,7 @@ const TodoItem = ({ todo }) => {
           color="black"
           style={styles.iconMargin}
           onPress={() => {
-            dispatch({ type: "CHANGE_TODO_STATUS", payload: todo.id - 1 });
+            dispatch({ type: "CHANGE_TODO_STATUS", payload: todo.id });
           }}
         />
         <Text
@@ -42,7 +42,9 @@ const TodoItem = ({ todo }) => {
           backgroundColor="transparent"
           size={20}
           color="black"
-          onPress={() => Toast.show("DELETE")}
+          onPress={() =>
+            dispatch({ type: "DELETE_TODO_ITEM", payload: todo.id })
+          }
         />
       </View>
     </View>
